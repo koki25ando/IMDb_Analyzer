@@ -5,15 +5,16 @@ source(file = "global.R",
 
 server = function(input, output) {
   
-  output$showcase_contant = renderTable({
+  output$showcase_contant = renderReactable({
     inFile <- input$file1
     
     if (is.null(inFile))
       return(NULL)
     
-    read.csv(inFile$datapath, fileEncoding = '', stringsAsFactors = TRUE)
+    df = read.csv(inFile$datapath, fileEncoding = '', stringsAsFactors = TRUE)
+    df = janitor::clean_names(df)
+    reactable(df)
     
-    
-  }) 
+  })
   
 }
