@@ -37,7 +37,7 @@ body <- dashboardBody(
   tabItems(
     tabItem(tabName = "data_upload",
             ## ------------------------- Upload dataset
-            tabBox(
+            fluidRow(tabBox(
               title = "Step 1",
               tabPanel(
                 title = "Upload",
@@ -59,8 +59,9 @@ body <- dashboardBody(
             box(
               title = "Showcase of Rating Dataset",
               label = "rating_showcase",
-              tableOutput(outputId = "showcase_contant")
-            )
+              width = 12,
+              reactableOutput(outputId = "showcase_contant")
+            ))
             
             ),
     tabItem(tabName = "imdb_analyzer"
