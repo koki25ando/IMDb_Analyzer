@@ -25,8 +25,8 @@ header <- dashboardHeader(
 
 sidebar <- dashboardSidebar(
   sidebarMenu(
-    menuItem("Upload Dataset", tabName = "data_upload", icon = icon("upload")),
     menuItem("IMDb Analyzer", tabName = "imdb_analyzer", icon = icon("chart-bar")),
+    menuItem("Upload Dataset", tabName = "data_upload", icon = icon("upload")),
     menuItem("Information", tabName = "information", icon = icon("info")),
     menuItem("Documentation", tabName = "documentation", icon = icon("book"))
   )
@@ -40,6 +40,7 @@ body <- dashboardBody(
             ## ------------------------- Upload dataset
             fluidRow(tabBox(
               title = "Step 1",
+              width = 4,
               tabPanel(
                 title = "Upload",
                 icon = icon("cloud-upload-alt"),
@@ -56,6 +57,7 @@ body <- dashboardBody(
               )
             ),
             infoBoxOutput(outputId = "movie_count"),
+            infoBoxOutput(outputId = "average_rating")
             ),
             fluidRow(
               
@@ -76,7 +78,7 @@ body <- dashboardBody(
                           value = c(4, 10)),
               sliderInput("your_rating_slider", label = h5("Your Rating Range"), 
                           min = 1, max = 10,
-                          value = c(3, 10)),
+                          value = c(3, 10))
               ),
 
             ## ------------------------ Showcase of Rating dataset
@@ -84,11 +86,16 @@ body <- dashboardBody(
               title = "Showcase of Rating Dataset",
               label = "rating_showcase",
               width = 9,
-              reactableOutput(outputId = "showcase_contant")
+              reactableOutput(outputId = "showcase_content")
             )
           )),
-    
-    tabItem(tabName = "imdb_analyzer"
+    tabItem(tabName = "imdb_analyzer",
+            fluidRow(
+              infoBoxOutput(outputId = "info_movies_reviewed"),
+              infoBoxOutput(outputId = "info_aerage_rating"),
+              infoBoxOutput(outputId = "info_favorite_genre"),
+              infoBoxOutput(outputId = "info_favorite_director")
+            )
             ),
     tabItem(tabName = "information"
             ),
