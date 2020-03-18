@@ -20,7 +20,16 @@ server = function(input, output) {
     req(input$column_selector)
     selected_columns = input$column_selector
     
-    reactable(df[, selected_columns])
+    req(input$release_year_slider, input$imdb_rating_slider, input$your_rating_slider)
+    
+    df = df %>% 
+      filter(Year >= input$release_year_slider[1] & Year <= input$release_year_slider[2],
+             IMDb_Rating >= input$imdb_rating_slider[1] & IMDb_Rating <= input$imdb_rating_slider[2],
+             Your_Rating >= input$your_rating_slider[1] & Your_Rating <= input$your_rating_slider[2])
+    
+    reactable(df[, selected_columns],
+              sortable = TRUE,  showSortable = TRUE
+    )
     
   })
   
