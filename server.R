@@ -107,88 +107,29 @@ server = function(input, output) {
             icon = icon("user-tie"))
   })
   
-  output$rating_histogram = renderEcharts4r({
-    if (is.null(df))
-      return(NULL)
-    
-    df %>% 
-      # count(Your_Rating) %>% 
-      # head()
-      e_charts() %>% 
-      e_histogram(Your_Rating) %>% 
-      e_theme("dark") %>% 
-      e_x_axis(min = 1) %>% 
-      e_tooltip(formatter = htmlwidgets::JS("
-                                            function(params){
-                                            return('Rating: ' + Math.floor(params.value[0]) + 
-                                            '<br />count: ' + params.value[1]) 
-                                            }
-                                            "))
-  })
+  ## Component: Histogram Chart
+  source(file = paste0(COMPONENT_PATH, 'HistogramChart.R'),
+         local = TRUE,
+         encoding = "UTF-8")
   
   ## Component: Pie Chart
   source(file = paste0(COMPONENT_PATH, 'PieChart.R'),
          local = TRUE,
          encoding = "UTF-8")
   
+  ## Component: Calendar
+  source(file = paste0(COMPONENT_PATH, 'Calendar.R'),
+         local = TRUE,
+         encoding = "UTF-8")
   
-  output$viewing_activity = renderEcharts4r({
-    runtime_calendar = df %>% 
-      select(Date_Rated, Runtime_Mins) %>% 
-      group_by(Date_Rated) %>%
-      summarise(Runtime_Mins_sum = sum(Runtime_Mins)) %>% 
-      ungroup()
-    runtime_calendar$Date_Rated = as.Date(runtime_calendar$Date_Rated)
-    dates <- seq.Date(min(runtime_calendar$Date_Rated), max(runtime_calendar$Date_Rated), by = "day")
-    year <- data.frame(Date_Rated = dates)
-    year$Date_Rated = as.Date(year$Date_Rated)
-    calendar_df = left_join(year, runtime_calendar)
-    
-    calendar_df %>% 
-      e_charts(Date_Rated) %>% 
-      e_calendar(range = c("2019-05", "2020-03-19")) %>% 
-      e_heatmap(Runtime_Mins_sum, coord_system = "calendar") %>% 
-      e_visual_map(max = 500, calculable = FALSE) %>%
-      e_legend(FALSE) %>%
-      # e_theme("dark") %>% 
-      e_title("Calendar", "Heatmap") %>% 
-      e_tooltip(formatter = htmlwidgets::JS("
-                          function(params){
-                                  return('Date: ' + params.value[0] + 
-                                         '<br />count: ' + params.value[1] + ' mins') 
-                                          }
-                                            "))
-  })
+  ## Component: Rating Scatter
+  source(file = paste0(COMPONENT_PATH, 'Scatter.R'),
+         local = TRUE,
+         encoding = "UTF-8")
   
-  output$rating_scatter = renderEcharts4r({
-    dat %>% 
-      e_charts(IMDb_Rating) %>% 
-      e_scatter(Your_Rating, Num_Votes) %>% 
-      e_x_axis(min = min(dat$Your_Rating)) %>% 
-      e_y_axis(min = 1) %>% 
-      e_theme("dark") %>% 
-      e_tooltip()
-  })
-  
-  output$monthly_activity = renderEcharts4r({
-    dat %>% 
-      select(Date_Rated, Runtime_Mins) %>% 
-      mutate(Date_Rated = as.Date(Date_Rated)) %>% 
-      filter(Date_Rated > as.Date(paste0(this_month, "-01"))) %>% 
-      arrange(Date_Rated) %>% 
-      group_by(Date_Rated) %>% 
-      summarise(Runtime_Mins_daily_sum = sum(Runtime_Mins, na.rm = T)) %>% 
-      mutate(Runtim_monthly_cumsum = cumsum(Runtime_Mins_daily_sum)) %>% 
-      e_charts(Date_Rated) %>% 
-      e_bar(Runtime_Mins_daily_sum,
-            y_index = 1,
-            itemStyle = list(normal = list(color = "#DD4B39")),
-            areaStyle = list(opacity = 0.4)) %>% 
-      e_line(Runtim_monthly_cumsum, 
-             # itemStyle = list(normal = list(color = "#DD4B39")),
-             areaStyle = list(opacity = 0.4)) %>% 
-      e_legend(type = 'scroll', orient = 'vertical', left = '10%', top = '15%') %>%
-      e_tooltip(trigger = 'axis')
-  })
+  ## Component: Bar plot
+  source(file = paste0(COMPONENT_PATH, 'BarChart.R'),
+         local = TRUE,
+         encoding = "UTF-8")
   
 }
