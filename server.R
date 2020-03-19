@@ -107,5 +107,38 @@ server = function(input, output) {
             icon = icon("user-tie"))
   })
   
+  output$rating_histogram = renderEcharts4r({
+    if (is.null(df))
+      return(NULL)
+    
+    df %>% 
+      # count(Your_Rating) %>% 
+      # head()
+      e_charts() %>% 
+      e_histogram(Your_Rating) %>% 
+      e_y_axis(name = "count") %>% 
+      e_theme("dark") %>% 
+      e_x_axis(min = 1) %>% 
+      e_tooltip(formatter = htmlwidgets::JS("
+                                            function(params){
+                                            return('Rating: ' + Math.floor(params.value[0]) + 
+                                            '<br />count: ' + params.value[1]) 
+                                            }
+                                            "))
+  })
+  
+  output$genre_pie = renderEcharts4r({
+    
+    genre_list = paste(df$Genres, collapse = ",")
+    splitted_list = strsplit(genre_list, ",")[[1]]
+    splitted_list = sapply(splitted_list, function(x) str_remove_all(x, " "))
+    genre_table = table(splitted_list)
+    data.table(genre_table) %>% 
+      e_charts(splitted_list) %>% 
+      e_pie(N) %>% 
+      e_legend(FALSE) %>% 
+      e_theme("dark")
+    
+  })
   
 }
