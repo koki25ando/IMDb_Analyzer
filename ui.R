@@ -97,11 +97,13 @@ body <- dashboardBody(
               infoBoxOutput(outputId = "info_favorite_director")
             ),
             fluidRow(
-              box(title = "Histogram of Your Rating Score",
-                  # background = "black",
+              box(title = "Rating Score Distribution",
                   echarts4rOutput("rating_histogram")),
               box(title = "Movie Genre Pie",
-                  echarts4rOutput("genre_pie"))
+                  echarts4rOutput("genre_pie")),
+              box(title = "Viewing Activity",
+                  width = 12,
+                  echarts4rOutput("viewing_activity"))
             )
             ),
     tabItem(tabName = "information"
