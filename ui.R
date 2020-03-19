@@ -102,16 +102,19 @@ body <- dashboardBody(
               box(title = "Movie Genre Pie",
                   echarts4rOutput("genre_pie")),
               box(title = "Viewing Activity",
-                  width = 12,
-                  echarts4rOutput("viewing_activity"))
-            )
+                  width = 12, 
+                  echarts4rOutput("viewing_activity")),
+              box(title = "Your Rating vs IMDb Rating",
+                  echarts4rOutput("rating_scatter")),
+              box(title = "Monthly Activity",
+                  echarts4rOutput("monthly_activity"))
             ),
     tabItem(tabName = "information"
             ),
     tabItem(tabName = "documentation"
     )
   )
-)
+))
 
 
 ##--------- Wrap Up --------
