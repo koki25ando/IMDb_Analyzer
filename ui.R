@@ -25,10 +25,9 @@ header <- dashboardHeader(
 
 sidebar <- dashboardSidebar(
   sidebarMenu(
+    menuItem("Documentation", tabName = "documentation", icon = icon("book")),
     menuItem("Upload Dataset", tabName = "data_upload", icon = icon("upload")),
-    menuItem("IMDb Analyzer", tabName = "imdb_analyzer", icon = icon("chart-bar")),
-    menuItem("Information", tabName = "information", icon = icon("info")),
-    menuItem("Documentation", tabName = "documentation", icon = icon("book"))
+    menuItem("IMDb Analyzer", tabName = "imdb_analyzer", icon = icon("chart-bar"))
   )
 )
 
@@ -36,6 +35,12 @@ sidebar <- dashboardSidebar(
 
 body <- dashboardBody(
   tabItems(
+    tabItem(tabName = "documentation",
+            source(
+              file = paste0(PAGE_PATH, 'document.R'),
+              local = T,
+              encoding = 'UTF-8')$value
+            ),
     tabItem(tabName = "data_upload",
             source(
               file = paste0(PAGE_PATH, 'upload.R'),
@@ -47,11 +52,7 @@ body <- dashboardBody(
               file = paste0(PAGE_PATH, 'Analyzer.R'),
               local = T,
               encoding = 'UTF-8')$value
-            ),
-    tabItem(tabName = "information"
-            ),
-    tabItem(tabName = "documentation"
-    )
+            )
   )
 )
 
