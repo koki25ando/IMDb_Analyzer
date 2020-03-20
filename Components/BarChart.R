@@ -1,4 +1,7 @@
 output$monthly_activity = renderEcharts4r({
+  
+  df = rowDataImport()
+  
   dat %>% 
     select(Date_Rated, Runtime_Mins) %>% 
     mutate(Date_Rated = as.Date(Date_Rated)) %>% 
@@ -17,4 +20,31 @@ output$monthly_activity = renderEcharts4r({
            areaStyle = list(opacity = 0.4)) %>% 
     e_legend(type = 'scroll', orient = 'vertical', left = '10%', top = '15%') %>%
     e_tooltip(trigger = 'axis')
+})
+
+
+output$release_year = renderEcharts4r({
+  df = rowDataImport()
+  
+  if (is.null(df))
+    return(NULL)
+  
+  dat %>% 
+    count(Year) %>% 
+    e_chart(Year) %>% 
+    e_bar(n, 
+          breaks = "Sturges",
+          bar_width = "100%",
+          y_index = 1) %>% 
+    e_x_axis(min = min(dat$Year) - 2, max = max(dat$Year) + 2,
+             axisLabel = list(interval = 0, rotate = 45)) %>% 
+    e_theme("dark") %>% 
+    e_legend(FALSE) %>% 
+    e_tooltip(formatter = htmlwidgets::JS("
+                                          function(params){
+                                          return('Rating: ' + Math.floor(params.value[0]) + 
+                                          '<br />count: ' + params.value[1]) 
+                                          }
+                                          "))
+  
 })
