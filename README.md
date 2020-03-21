@@ -5,7 +5,7 @@
 ## ratings.csv data
 
 | Variable        | Description           |
-| ------------- |:-------------:|
+| ------------- |:-------------|
 | Title      | The localized title |
 | Year    | The year that the film released as an integer. |
 | Your_Rating   | Your rating |
