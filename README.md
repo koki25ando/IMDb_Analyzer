@@ -1,5 +1,7 @@
 # IMDb Analyzer
 
+IMDb Analyzer is the single page application in which users can explore and analyze their own movie viewing history data based on their IMDb user rating activities. This dashboard lets users discover their movie preferences and tendencies on movies.
+
 # Supported Input Data
 
 ## ratings.csv data
@@ -20,3 +22,5 @@
 | URL| IMDB link of the movie |
 
 # Author
+
+IMDb Analyzer was created by [@ko25and](https://twitter.com/ko25and).
