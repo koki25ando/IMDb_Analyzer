@@ -1,6 +1,6 @@
 # 🔧 Setup dataset 🔧
 
-To explore your movie activities, you have to upload your dataset. In this page, you will given procedure that explains everything you need to do step by step.
+To explore your movie activities, you have to upload your dataset. In this page, you will find everything you need know before using IMDb Analyzer and how to upload your dataset step by step.
 
 ## Step1: (Create and) Login to your IMDb Account
 
