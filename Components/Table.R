@@ -1,4 +1,5 @@
-output$showcase_content = renderReactable({
+rowDataImport = reactive({
+  req(input$file1)
   inFile <- input$file1
   
   if (is.null(inFile))
@@ -9,6 +10,13 @@ output$showcase_content = renderReactable({
   names(df) = c("const", "Your_Rating", "Date_Rated", "Title", "URL", "Type", "IMDb_Rating", "Runtime_Mins", "Year", "Genres", 
                 "Num_Votes", "Release_Date", "Directors")
   df = df[, features]
+})
+
+
+
+output$showcase_content = renderReactable({
+  
+  df = rowDataImport()
   
   req(input$column_selector)
   selected_columns = input$column_selector
@@ -23,5 +31,17 @@ output$showcase_content = renderReactable({
   reactable(reactable_df[, selected_columns],
             sortable = TRUE,  showSortable = TRUE
   )
+  
+})
+
+output$monthly_activity_table = renderReactable({
+  df = rowDataImport()
+  
+  df %>% 
+    mutate(Date_Rated = as.Date(Date_Rated)) %>% 
+    filter(Date_Rated > as.Date(paste0(this_month, "-01"))) %>% 
+    arrange(desc(Date_Rated)) %>% 
+    select(Date_Rated, Title, Your_Rating, IMDb_Rating, Runtime_Mins, Directors) %>% 
+    reactable(sortable = TRUE,  showSortable = TRUE)
   
 })
