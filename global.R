@@ -1,12 +1,12 @@
 ##-------- Global Script ---------
 
 ## ------- PATH SETTING
-COMPONENT_PATH <- 'Components/'
-
+COMPONENT_PATH = 'Components/'
+PAGE_PATH = 'Pages/'
 
 ## package loading 
 library(pacman)
-p_load(tidyverse, shiny, shinydashboard, janitor, reactable, echarts4r)
+p_load(tidyverse, shiny, shinydashboard, janitor, reactable, echarts4r, shinycssloaders, DT, data.table)
 
 ## ------------------------ Data Showcases
 features = c("Title", "Year", "Your_Rating", "IMDb_Rating", "Date_Rated", "Type", "Runtime_Mins", "Genres", 
