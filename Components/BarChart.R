@@ -2,7 +2,7 @@ output$monthly_activity = renderEcharts4r({
   
   df = rowDataImport()
   
-  dat %>% 
+  df %>% 
     select(Date_Rated, Runtime_Mins) %>% 
     mutate(Date_Rated = as.Date(Date_Rated)) %>% 
     filter(Date_Rated > as.Date(paste0(this_month, "-01"))) %>% 
@@ -29,14 +29,14 @@ output$release_year = renderEcharts4r({
   if (is.null(df))
     return(NULL)
   
-  dat %>% 
+  df %>% 
     count(Year) %>% 
     e_chart(Year) %>% 
     e_bar(n, 
           breaks = "Sturges",
           bar_width = "100%",
           y_index = 1) %>% 
-    e_x_axis(min = min(dat$Year) - 2, max = max(dat$Year) + 2,
+    e_x_axis(min = min(df$Year) - 2, max = max(df$Year) + 2,
              axisLabel = list(interval = 0, rotate = 45)) %>% 
     e_theme("dark") %>% 
     e_legend(FALSE) %>% 
