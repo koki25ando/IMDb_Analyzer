@@ -8,7 +8,7 @@ To keep your viewing activities, you need IMDb account. To set up your, see the 
 
 After (creating and) log into your account, go to 'Your ratings' page as shown below.
 
-![step1](Step1.jpg)
+![step1](snapshot/Step1.jpg)
 
 ## Step2: Download your data
 
@@ -16,7 +16,7 @@ On 'Your ratings' page, you can find a list of movies you have reviewed before.
 
 Click the tab on the right side and export your rating data.
 
-![step2](Step2.jpg)
+![step2](snapshot/Step2.jpg)
 
 ## Step3: Upload data to IMDb Analyzer
 
@@ -24,4 +24,4 @@ Now you are ready to go!
 
 Upload your rating data to analyze and explore!
 
-![step3](Step3.jpg)
+![step3](snapshot/Step3.jpg)
