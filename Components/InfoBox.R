@@ -33,6 +33,7 @@ output$info_favorite_director = renderInfoBox({
   if (is.null(df))
     return(NULL)
   info_fav_director = count(df, Directors) %>% 
+    filter(Directors != "") %>% 
     top_n(1) %>% 
     pull(Directors) %>% 
     as.character()
