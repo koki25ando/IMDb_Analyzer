@@ -1,5 +1,7 @@
+# ui update
 output$rating_scatter = renderEcharts4r({
-  dat %>% 
+  df = rowDataImport()
+  df %>% 
     e_charts(IMDb_Rating) %>% 
     e_scatter(Your_Rating, Num_Votes) %>% 
     e_x_axis(min = min(dat$Your_Rating)) %>% 
