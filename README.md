@@ -1,7 +1,7 @@
 # IMDb Analyzer
 
 ![language](https://img.shields.io/github/languages/top/koki25ando/IMDb_Analyzer?style=flat-square)
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)
 ![last commit](https://img.shields.io/github/last-commit/koki25ando/IMDb_Analyzer)
 ![code-size](https://img.shields.io/github/languages/code-size/koki25ando/imdb_analyzer.svg)
 
