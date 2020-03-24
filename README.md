@@ -1,5 +1,10 @@
 # IMDb Analyzer
 
+![language](https://img.shields.io/github/languages/top/koki25ando/IMDb_Analyzer?style=flat-square)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![last commit](https://img.shields.io/github/last-commit/koki25ando/IMDb_Analyzer)
+![code-size](https://img.shields.io/github/languages/code-size/koki25ando/imdb_analyzer.svg)
+
 IMDb Analyzer is a single page application in which users can explore and analyze their own "Movie Viewing History" data based on their IMDb user rating activities. This dashboard lets users discover their movie preferences and trends on movies.
 
 
