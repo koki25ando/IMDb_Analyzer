@@ -11,17 +11,22 @@ getGenreTable = reactive({
   genre_table = data.table(table(splitted_list))
 })
 
+
+# activate interactivity
 output$genre_pie = renderEcharts4r({
+  
   genre_df = getGenreTable()
   
-  if (is.null(genre_df))
-    return(NULL)
-  
   genre_df %>% 
-    e_charts(splitted_list) %>% 
+    e_chart(splitted_list) %>% 
     e_pie(N) %>% 
     e_legend(FALSE) %>% 
     e_theme("dark") %>% 
-    e_tooltip()
+    e_tooltip(formatter = htmlwidgets::JS("
+                                          function(params){
+                                          return('Genre: ' + params.value[0] + 
+                                          '<br />Count: ' + params.value[1]) 
+}
+  "))
   
 })
