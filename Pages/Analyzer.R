@@ -14,9 +14,14 @@ fluidRow(
       width = 12, 
       echarts4rOutput("viewing_activity")) %>% 
     withSpinner(color = "#DD4B39"),
+  
+  ## ----------- Scatter Plot -----------------
   box(title = "Your Rating vs IMDb Rating",
-      echarts4rOutput("rating_scatter")) %>% 
+      # echarts4rOutput("rating_scatter")) %>% 
+      plotlyOutput("rating_scatter_plotly")) %>% 
     withSpinner(color = "#DD4B39"),
+  ## ------------------------------------------
+  
   box(title = "Release Year",
       echarts4rOutput("release_year")) %>% 
     withSpinner(color = "#DD4B39"),
