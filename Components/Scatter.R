@@ -19,3 +19,29 @@ output$rating_scatter = renderEcharts4r({
                                           '<br />Num Votes: ' + kFormatter(params.value[2])) 
 }"))
 })
+
+
+output$rating_scatter_plotly = renderPlotly({
+  
+  df = rowDataImport()
+  
+  df %>% 
+    plot_ly(type = 'scatter', mode = 'markers') %>% 
+    add_trace(x = ~IMDb_Rating, y = ~Your_Rating, 
+              size = ~Num_Votes,
+              marker = list(color = "rgba(236,116,111, 0.5)",
+                            line = list(color = 'rgb(236,116,111)',
+                                        width = 0.3)
+              ),
+              hoverinfo = "text",
+              text = ~paste0(Title,
+                             "<br>Director: ", Directors,
+                             "<br>IMDb Rating: ", IMDb_Rating,
+                             "<br>Your Rating: ", Your_Rating),
+              showlegend = F) %>% 
+    layout(plot_bgcolor = "rgb(51,51,51)",
+           xaxis = list(title = "IMDb Rating",
+                        gridcolor = "rgba(238, 238, 238, 0.3)"),
+           yaxis = list(title = "Your Rating",
+                        gridcolor = "rgba(238, 238, 238, 0.3)"))
+})
