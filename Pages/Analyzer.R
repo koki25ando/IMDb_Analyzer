@@ -5,39 +5,39 @@ fluidPage(fluidRow(
   infoBoxOutput(outputId = "info_favorite_director")
   ),
 fluidRow(
-  box(title = "Rating Score Distribution",
-      echarts4rOutput("rating_histogram")) %>% 
-    withSpinner(color = "#DD4B39"),
-  box(title = "Movie Genre Pie",
-      echarts4rOutput("genre_pie")),
-  box(title = "Viewing Activity",
-      width = 12, 
-      echarts4rOutput("viewing_activity")) %>% 
-    withSpinner(color = "#DD4B39"),
-  
-  ## ----------- Scatter Plot -----------------
-  box(title = "Your Rating vs IMDb Rating",
-      # echarts4rOutput("rating_scatter")) %>% 
-      plotlyOutput("rating_scatter_plotly")) %>% 
-    withSpinner(color = "#DD4B39"),
-  ## ------------------------------------------
-  
-  box(title = "Release Year",
-      echarts4rOutput("release_year")) %>% 
-    withSpinner(color = "#DD4B39"),
-  fluidRow(width = 12,
-           box(title = "Monthly Activity",
-               width = 5,
-               
-               ## ------------- YEAR_MONTH Selector -----------------------
-               uiOutput("year_mon_selector"),
-               ## ---------------------------------------------------------
-               
-               echarts4rOutput("monthly_activity")) %>% 
+  fluidRow(
+    box(title = "Rating Score Distribution",
+               echarts4rOutput("rating_histogram")) %>% 
              withSpinner(color = "#DD4B39"),
-           
-           box(title = "Monthly Activity Data Table",
-               width = 7,
-               reactableOutput("monthly_activity_table")) %>% 
-             withSpinner(color = "#DD4B39"))
+    box(title = "Movie Genre Pie",
+               echarts4rOutput("genre_pie")
+               # plotlyOutput("genre_pie_plotly")
+           )),
+  fluidRow(
+    box(title = "Viewing Activity",
+        width = 12, 
+        echarts4rOutput("viewing_activity")) %>% 
+      withSpinner(color = "#DD4B39")
+  ),
+  fluidRow(
+    ## ----------- Scatter Plot -----------------
+    box(title = "Your Rating vs IMDb Rating",
+        # echarts4rOutput("rating_scatter")) %>% 
+        plotlyOutput("rating_scatter_plotly")) %>% 
+      withSpinner(color = "#DD4B39"),
+    ## ------------------------------------------
+    
+    box(title = "Release Year",
+        echarts4rOutput("release_year")) %>% 
+      withSpinner(color = "#DD4B39")
+  ),
+  fluidRow(
+    box(title = "Monthly Activity",
+        ## ------------- YEAR_MONTH Selector -----------------------
+        uiOutput("year_mon_selector"),
+        ## ---------------------------------------------------------
+        echarts4rOutput("monthly_activity")),
+      box(title = "Monthly Activity Data Table",
+          reactableOutput("monthly_activity_table"))
+    )
 ))
