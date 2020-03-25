@@ -1,4 +1,7 @@
 output$viewing_activity = renderEcharts4r({
+  
+  df = rowDataImport()
+  
   runtime_calendar = df %>% 
     select(Date_Rated, Runtime_Mins) %>% 
     group_by(Date_Rated) %>%
@@ -17,7 +20,7 @@ output$viewing_activity = renderEcharts4r({
     e_visual_map(max = 500, calculable = FALSE) %>%
     e_legend(FALSE) %>%
     # e_theme("dark") %>% 
-    e_title("Calendar", "Heatmap") %>% 
+    e_title("Last 12 Months Activities") %>% 
     e_tooltip(formatter = htmlwidgets::JS("
                                           function(params){
                                           return('Date: ' + params.value[0] + 
