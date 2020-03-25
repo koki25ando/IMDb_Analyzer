@@ -4,15 +4,15 @@ output$monthly_activity = renderEcharts4r({
   
   df = get_monthly_cumsum_runtime_df()
   
-  
   df %>% 
+    mutate(Daily_Watch_Time = Runtime_Mins_daily_sum,
+           Monthly_Watch_Time = Runtim_monthly_cumsum) %>% 
     e_charts(Date_Rated) %>% 
-    e_bar(Runtime_Mins_daily_sum,
+    e_bar(Daily_Watch_Time,
           y_index = 1,
           itemStyle = list(normal = list(color = "#DD4B39")),
           areaStyle = list(opacity = 0.4)) %>%
-    e_line(Runtim_monthly_cumsum,
-           # itemStyle = list(normal = list(color = "#DD4B39")),
+    e_line(Monthly_Watch_Time,
            areaStyle = list(opacity = 0.4)) %>%
     e_legend(type = 'scroll', orient = 'vertical', left = '10%', top = '15%') %>%
     e_tooltip(trigger = 'axis')
