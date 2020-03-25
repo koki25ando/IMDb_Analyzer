@@ -1,4 +1,3 @@
-# activate reactivity
 output$rating_histogram = renderEcharts4r({
   df = rowDataImport()
   
