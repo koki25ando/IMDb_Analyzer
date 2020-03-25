@@ -35,13 +35,14 @@ output$showcase_content = renderReactable({
 })
 
 output$monthly_activity_table = renderReactable({
-  df = rowDataImport()
+  df = get_selected_month_df()
   
   df %>% 
-    mutate(Date_Rated = as.Date(Date_Rated)) %>% 
-    filter(Date_Rated > as.Date(paste0(this_month, "-01"))) %>% 
-    arrange(desc(Date_Rated)) %>% 
-    select(Date_Rated, Title, Your_Rating, IMDb_Rating, Runtime_Mins, Directors) %>% 
+    head() %>% 
+    # mutate(Date_Rated = as.Date(Date_Rated)) %>% 
+    # filter(Date_Rated > as.Date(paste0(input$year_mon_rated, "-01"))) %>%
+    # arrange(desc(Date_Rated)) %>% 
+    # select(Date_Rated, Title, Your_Rating, IMDb_Rating, Runtime_Mins, Directors) %>% 
     reactable(sortable = TRUE,  showSortable = TRUE)
   
 })
