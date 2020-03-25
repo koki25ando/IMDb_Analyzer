@@ -10,6 +10,17 @@ server = function(input, output) {
          local = TRUE,
          encoding = "UTF-8")
   
+  ## Component: Input
+  source(file = paste0(COMPONENT_PATH, 'Input.R'),
+         local = TRUE,
+         encoding = "UTF-8")
+  
+  ## Component: Utility
+  source(file = paste0(COMPONENT_PATH, 'utility.R'),
+         local = TRUE,
+         encoding = "UTF-8")
+  
+  
   ## Component: Table
   source(file = paste0(COMPONENT_PATH, 'ValueBox.R'),
          local = TRUE,
