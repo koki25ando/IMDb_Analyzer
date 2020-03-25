@@ -16,3 +16,7 @@ features = c("Title", "Year", "Your_Rating", "IMDb_Rating", "Date_Rated", "Type"
 ## --------------- Var Setting ----------------------
 today = Sys.Date()
 this_month = format(today, "%Y-%m")
+
+
+## --------------- System Setting -------------------
+Sys.setlocale('LC_ALL','C')
