@@ -15,7 +15,7 @@ output$viewing_activity = renderEcharts4r({
   
   calendar_df %>% 
     e_charts(Date_Rated) %>% 
-    e_calendar(range = c("2019-05", "2020-03-19")) %>% 
+    e_calendar(range = c(this_month_last_year, as.character(today))) %>% 
     e_heatmap(Runtime_Mins_sum, coord_system = "calendar") %>% 
     e_visual_map(max = 500, calculable = FALSE) %>%
     e_legend(FALSE) %>%
