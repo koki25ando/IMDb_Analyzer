@@ -6,7 +6,7 @@ tabBox(
     fluidRow(column(includeMarkdown("Document/Welcome.md"), width = 10, offset = 1))
     ),
   tabPanel(
-    title = "Upload Data",
+    title = "How to Upload Data",
     icon = icon("file-upload"),
     fluidRow(column(includeMarkdown("Document/SetupProcedure.md"), width = 10, offset = 1))),
   tabPanel(
