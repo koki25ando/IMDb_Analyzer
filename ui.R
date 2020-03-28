@@ -34,6 +34,9 @@ sidebar <- dashboardSidebar(
 ###-------- Body ---------
 
 body <- dashboardBody(
+  
+  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "www/custom.css")),
+  
   tabItems(
     tabItem(tabName = "documentation",
             source(
