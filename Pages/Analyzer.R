@@ -20,6 +20,12 @@ fluidRow(
       withSpinner(color = "#DD4B39")
   ),
   fluidRow(
+    box(title = "Monthly Review Numbers",
+        width = 12,
+        echarts4rOutput('monthly_review_nums')) %>%
+      withSpinner(color = "#DD4B39")
+  ),
+  fluidRow(
     ## ----------- Scatter Plot -----------------
     box(title = "Your Rating vs IMDb Rating",
         # echarts4rOutput("rating_scatter")) %>% 
