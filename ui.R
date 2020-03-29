@@ -24,7 +24,6 @@ header <- dashboardHeader(
 ###-------- Sidebar ---------
 
 sidebar <- dashboardSidebar(
-  collapsed = TRUE, 
   sidebarMenu(
     id = "sideBarTab",
     menuItem("Documentation", tabName = "documentation", icon = icon("book"),
@@ -39,7 +38,7 @@ sidebar <- dashboardSidebar(
 
 body <- dashboardBody(
   
-  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "www/custom.css")),
+  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")),
   
   tabItems(
     tabItem(tabName = "documentation",
