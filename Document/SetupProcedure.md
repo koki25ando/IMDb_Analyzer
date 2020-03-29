@@ -24,4 +24,6 @@ Now you are ready to go!
 
 Upload your rating data to analyze and explore!
 
-![step3](snapshot/Step3.jpg)
+![step3_1](snapshot/Step3.jpg)
+
+<img src="snapshot/UploadRatingData.gif" width="1000" style="max-width: 90%">
