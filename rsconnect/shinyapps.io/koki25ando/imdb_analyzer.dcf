@@ -5,7 +5,7 @@ account: koki25ando
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1993078
-bundleId: 2939185
+bundleId: 2939599
 url: https://koki25ando.shinyapps.io/imdb_analyzer/
-when: 1585483152.83535
-lastSyncTime: 1585483152.83538
+when: 1585493483.62254
+lastSyncTime: 1585493483.62256
