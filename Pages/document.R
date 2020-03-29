@@ -1,5 +1,6 @@
-tabBox(
+fluidPage(tabBox(
   width = 11,
+  title = "Documentation",
   tabPanel(
     title = "IMDb Analyzer",
     icon = icon("film"),
@@ -13,4 +14,4 @@ tabBox(
     title = "Movie Analysis",
     icon = icon("chart-pie"),
     fluidRow(column(includeMarkdown("Document/MovieAnalysis.md"), width = 10, offset = 1)))
-)
+))
