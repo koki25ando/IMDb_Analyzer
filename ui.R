@@ -17,13 +17,14 @@ header <- dashboardHeader(
       message = "Available on GitHub", 
       href = "https://github.com/koki25ando/IMDb_Analyzer",
       icon = icon('file-code')
-      ) 
+      )
     )
 )
 
 ###-------- Sidebar ---------
 
 sidebar <- dashboardSidebar(
+  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")),
   sidebarMenu(
     id = "sideBarTab",
     menuItem("Documentation", tabName = "documentation", icon = icon("book"),
@@ -31,6 +32,18 @@ sidebar <- dashboardSidebar(
     menuItem("Upload Dataset", tabName = "data_upload", icon = icon("upload"),
              badgeLabel = "Step 0", badgeColor = "black"),
     menuItem("IMDb Analyzer", tabName = "imdb_analyzer", icon = icon("chart-bar"))
+  ),
+  tags$head(
+    tags$style(HTML('#twitter_share{
+                        background-color:#3C91DA;
+                        color: white;
+                    }'))
+  ),
+  actionButton(inputId = "twitter_share",
+               label = "Share on twitter",
+               icon = icon("twitter"),
+               # width = 10,
+               onclick = sprintf("window.open('%s')", twitterUrl)
   )
 )
 
