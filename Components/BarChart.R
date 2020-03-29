@@ -1,5 +1,3 @@
-
-
 output$monthly_activity = renderEcharts4r({
   
   df = get_monthly_cumsum_runtime_df()
@@ -43,5 +41,20 @@ output$release_year = renderEcharts4r({
                                           }
                                           "))
   
+})
+
+
+output$monthly_review_nums = renderEcharts4r({
+  df = rowDataImport()
+  df %>% 
+    select(Date_Rated) %>% 
+    mutate(Date_Rated = format(as.Date(Date_Rated), "%Y-%m")) %>% 
+    count(Date_Rated) %>% 
+    e_charts(Date_Rated) %>% 
+    e_bar(n) %>%
+    e_line(n) %>% 
+    e_tooltip() %>% 
+    e_legend(FALSE) %>% 
+    e_theme("dark")
 })
 
