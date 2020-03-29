@@ -24,9 +24,13 @@ header <- dashboardHeader(
 ###-------- Sidebar ---------
 
 sidebar <- dashboardSidebar(
+  collapsed = TRUE, 
   sidebarMenu(
-    menuItem("Documentation", tabName = "documentation", icon = icon("book")),
-    menuItem("Upload Dataset", tabName = "data_upload", icon = icon("upload")),
+    id = "sideBarTab",
+    menuItem("Documentation", tabName = "documentation", icon = icon("book"),
+             badgeLabel = "First!", badgeColor = "yellow"),
+    menuItem("Upload Dataset", tabName = "data_upload", icon = icon("upload"),
+             badgeLabel = "Step 0", badgeColor = "black"),
     menuItem("IMDb Analyzer", tabName = "imdb_analyzer", icon = icon("chart-bar"))
   )
 )
@@ -63,3 +67,4 @@ body <- dashboardBody(
 ##--------- Wrap Up --------
 
 ui <- dashboardPage(header, sidebar, body)
+
