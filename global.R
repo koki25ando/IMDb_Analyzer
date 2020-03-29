@@ -5,8 +5,6 @@ COMPONENT_PATH = 'Components/'
 PAGE_PATH = 'Pages/'
 
 ## package loading 
-# library(pacman)
-# p_load(tidyverse, shiny, shinydashboard, htmlwidgets, janitor, reactable, echarts4r, shinycssloaders, DT, data.table, plotly)
 library(tidyverse)
 library(shiny)
 library(shinydashboard)
