@@ -33,12 +33,6 @@ sidebar <- dashboardSidebar(
              badgeLabel = "Step 0", badgeColor = "black"),
     menuItem("IMDb Analyzer", tabName = "imdb_analyzer", icon = icon("chart-bar"))
   ),
-  tags$head(
-    tags$style(HTML('#twitter_share{
-                        background-color:#3C91DA;
-                        color: white;
-                    }'))
-  ),
   actionButton(inputId = "twitter_share",
                label = "Share on twitter",
                icon = icon("twitter"),
