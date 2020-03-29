@@ -32,3 +32,11 @@ this_month = format(today, "%Y-%m")
 
 ## --------------- System Setting -------------------
 Sys.setlocale('LC_ALL','C')
+
+## ---------------------   Twitter share url ---------------------
+
+twitterUrl <- paste0('https://twitter.com/intent/tweet?text=Analyze your movie review data on IMDb Analyzer',
+                     '&hashtags=',
+                     'IMDb, IMDb_Analyzer',
+                     '&url=https://koki25ando.shinyapps.io/imdb_analyzer/')
+
